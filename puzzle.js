@@ -3,37 +3,37 @@
  */
 var numOfGates = 0;
 var coinsToTakeAway = 0;
+var result = 0;
 //calling on click of calculate button
 function calculate(clicked_id) {
     //getting values from input box
     getvalues()
-    // makeCircle(numOfGates)
 
     // applying equation [a*2^n+(2^n-1)] a=coinsToTakeAway n=numOfGates
     var power = Math.pow(2,numOfGates);             //separately calculating 2^n
-    var result = (power*coinsToTakeAway)+(power-1)
+    result = (power*coinsToTakeAway)+(power-1)
 
+    makeCircle(numOfGates, result)
     // updating the result on page
     document.getElementById('coins_to_pick').innerHTML=result
 }
 
-// function makeCircle(numOfGates) {
-//     for (var i=0; i<=numOfGates; i++){
-//         var y = document.createElement("div");
-//         var k=i*i
-//         y.setAttribute("id","circle"+i);
-//         y.style.border="2px solid red";
-//         y.style.borderRadius="50%";
-//         y.style.height="50px";
-//         y.style.width="50px"
-//         if (i==0) {
-//             document.getElementById("coins_to_pick_div").appendChild(y);
-//         }else {
-//             console.log("circle"+(i-1));
-//             document.getElementById("circle"+(i-1)).appendChild(y);
-//         }
-//     }
-// }
+function makeCircle(numOfGates, result) {
+    for (var i=0; i<=numOfGates; i++){
+        var y = document.createElement("div");
+        y.setAttribute("id","circle"+i);
+        y.setAttribute("class", "circles");
+        if (i==0) {
+            y.innerHTML=coinsToTakeAway;
+            document.getElementById("coins_to_pick_div").appendChild(y);
+        }else {
+            document.getElementById("circle"+(i-1)).appendChild(y);
+            if (i==numOfGates){
+                y.innerHTML=result;
+            }
+        }
+    }
+}
 
 function getvalues() {
     numOfGates = document.getElementById('num_of_gates').value;

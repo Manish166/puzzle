@@ -1,0 +1,9 @@
+.circles{
+    /*width:80px;*/
+    /*height:80px;*/
+    border-radius:50%;
+    /*background-color:#CE1126;*/
+    /*background-clip:content-box;*/
+    padding:50px;
+    border:3px solid #00247D;
+}
